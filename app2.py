@@ -37,12 +37,12 @@ BehavioralProblems = st.radio("Do you have behavioral problems?", ["Yes", "No"],
 BehavioralProblems_encoded = 1 if BehavioralProblems == "Yes" else 0
 
 FunctionalAssessment = st.number_input("How well you can handle physical, mental and social tasks (0-10)", min_value=0.0, max_value=10.0, value=0.0, step=0.1, format="%.2f", key="fun_acc_input")
-#MMSE = st.number_input("How active your brain is in remembering things, answering questions and following instructions (0-30)", min_value=0.0, max_value=30.0, value=0.0, step=0.1, format="%.2f", key="MMSE_input")
+MMSE = st.number_input("How active your brain is in remembering things, answering questions and following instructions (0-30)", min_value=0.0, max_value=30.0, value=0.0, step=0.1, format="%.2f", key="MMSE_input")
 
 
 input_data = np.array([[
     Age, EducationLevel_encoded, DietQuality, SleepQuality, PhysicalActivity, 
-    ADL, AlcoholConsumption, BMI, SystolicBP,  DiastolicBP,
+    ADL, AlcoholConsumption, BMI,  SystolicBP, DiastolicBP,
     CholesterolLDL, CholesterolHDL, CholesterolTriglycerides, CholesterolTotal,  
     MemoryComplaints_encoded, BehavioralProblems_encoded, FunctionalAssessment, MMSE,
 ]])
@@ -50,4 +50,8 @@ input_data = np.array([[
 
 if st.button("Predict"):
     prediction = model.predict(input_data)[0]
-    st.success(f"Prediction: {prediction}")
+
+    if prediction == 1:
+        st.success(f"Prediction: {prediction}, Patient may have Alzheimer's disease.")
+    else:
+        st.success(f"Prediction: {prediction}, Patient is unlikely to have Alzheimer's disease.")
