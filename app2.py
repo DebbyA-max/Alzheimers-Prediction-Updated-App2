@@ -37,7 +37,7 @@ BehavioralProblems = st.radio("Do you have behavioral problems?", ["Yes", "No"],
 BehavioralProblems_encoded = 1 if BehavioralProblems == "Yes" else 0
 
 FunctionalAssessment = st.number_input("How well you can handle physical, mental and social tasks (0-10)", min_value=0.0, max_value=10.0, value=0.0, step=0.1, format="%.2f", key="fun_acc_input")
-MMSE = st.number_input("How active your brain is in remembering things, answering questions and following instructions (0-30)", min_value=0.0, max_value=30.0, value=0.0, step=0.1, format="%.2f", key="MMSE_input")
+#MMSE = st.number_input("How active your brain is in remembering things, answering questions and following instructions (0-30)", min_value=0.0, max_value=30.0, value=0.0, step=0.1, format="%.2f", key="MMSE_input")
 
 
 input_data = np.array([[
